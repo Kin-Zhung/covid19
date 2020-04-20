@@ -10,25 +10,7 @@ app.use((req,res,next)=>{
 })
 
 app.use('/' ,(req,res,next)=>{
-    // const axios = require("axios");
 
-    // axios({
-    //     "method":"GET",
-    //     "url":"https://covid-193.p.rapidapi.com/statistics",
-    //     "headers":{
-    //     "content-type":"application/octet-stream",
-    //     "x-rapidapi-host":"covid-193.p.rapidapi.com",
-    //     "x-rapidapi-key":"67238ba9a5msh92dd86d0c03b206p127490jsnf552b5cec39d"
-    // }
-    // })
-    // .then((body)=>{
-    //   console.log(response)
-    //   var content = JSON.stringify(response);
-    //   console.log(content);
-    // })
-    // .catch((error)=>{
-    //   console.log(error)
-    // })
     var request = require("request");
 
     var options = {
