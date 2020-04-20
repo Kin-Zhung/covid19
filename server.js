@@ -47,11 +47,11 @@ const path = require('path');
 const app = express();
 
 // Serve static files....
-app.use(express.static(__dirname + '/dist/Covid19'));
+app.use(express.static(__dirname + '/dist/covid19'));
 
 // Send all requests to index.html
 app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname + '/dist/Covid19/index.html'));
+  res.sendFile(path.join(__dirname + '/dist/covid19/index.html'));
 });
 
 const port = normalizePort(process.env.PORT || "3000");
