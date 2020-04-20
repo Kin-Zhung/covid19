@@ -1,7 +1,13 @@
 const express = require('express');
-
+const path = require('path')
 const app = express();
+// Serve static files....
+app.use(express.static(__dirname + '/dist/Covid19'));
 
+// Send all requests to index.html
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/Covid19/index.html'));
+});
 app.use((req,res,next)=>{
     res.setHeader('Access-Control-Allow-Origin',"*");
     res.setHeader('Access-Control-Allow-Header',"Origin, X-Requested-with, Content-Type, Accept");
