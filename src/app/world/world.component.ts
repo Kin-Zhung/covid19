@@ -41,7 +41,7 @@ export class WorldComponent implements OnInit {
 
 
     getWorldStats(){
-      this.http.get('http://localhost:3000/').pipe(map(data =>{
+      this.http.get('https://covid19piechart.herokuapp.com/').pipe(map(data =>{
         for(const key in data){
           const dataArray=[];
           this.worldData.push({...data[key],"chart":[{"name":"dead","value":data[key].deaths.total.valueOf()},{"name":"critical","value":data[key].cases.critical.valueOf()},{"name":"active","value":data[key].cases.active.valueOf()},{"name":"recovered","value":data[key].cases.recovered.valueOf()}]})
