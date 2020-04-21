@@ -7,6 +7,7 @@ import { DataSource } from '@angular/cdk/table';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { JsonPipe } from '@angular/common';
 import { stringify } from 'querystring';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-world',
   templateUrl: './world.component.html',
@@ -20,6 +21,7 @@ export class WorldComponent implements OnInit {
   single: any[];
   view: any[] = [300, 300];
   search="";
+  countrylist = [];
 
   // options
   gradient: boolean = true;
@@ -41,10 +43,11 @@ export class WorldComponent implements OnInit {
 
 
     getWorldStats(){
-      this.http.get('https://covid19piechart.herokuapp.com/').pipe(map(data =>{
+      this.http.get(environment.apiUrl).pipe(map(data =>{
         for(const key in data){
           const dataArray=[];
-          this.worldData.push({...data[key],"chart":[{"name":"dead","value":data[key].deaths.total.valueOf()},{"name":"critical","value":data[key].cases.critical.valueOf()},{"name":"active","value":data[key].cases.active.valueOf()},{"name":"recovered","value":data[key].cases.recovered.valueOf()}]})
+          this.worldData.push({...data[key],"chart":[{"name":"dead","value":data[key].deaths.total.valueOf()},{"name":"critical","value":data[key].cases.critical.valueOf()},{"name":"active","value":data[key].cases.active.valueOf()},{"name":"recovered","value":data[key].cases.recovered.valueOf()}]});
+          this.countrylist.push({"country":data[key].country.valueOf()});
         }
      }))
       .subscribe((d)=>{

@@ -1,23 +1,24 @@
-<div id="header"> 
+<div id = "header">
 <nav class="navbar fixed-top navbar-light bg-light">
 
     <a class="navbar-brand" href="#">COVID19</a>
   
     <div id="searchbar">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="search">
+    <select id="country" [(ngModel)]="search">
+      <option *ngFor = "let name of countrylist" value={{name.country}}>{{name.country}}</option>
+    </select>
+    <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="search"> -->
     <a class="btn btn-outline-success my-2 my-sm-0" href="#{{search}}">Search</a>
-  </div>
-
-  
+  </div> 
 </nav>
- 
+</div>
+ <div id="space">
       <div class="container-fluid">
         <div class="card" style="width: 100%;" *ngFor="let country of worldData">
           <a id="{{country.country}}"></a>
           <div class="container">
             <div class="row">
               <div class="col-sm">
-                <h3>Last updated:</h3>
               </div>
               <div class="col-sm">
                 <h1>{{country.country}}</h1>
@@ -62,6 +63,6 @@
     </div>
   </div>
 
-
+</div>
 
 
